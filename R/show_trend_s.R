@@ -30,10 +30,12 @@ show_trend_s <- function(trend) {
   which <- attr(trend, "which")
   location <- attr(trend, "location")
 
-  last_updated <- format(Sys.time(), format = "%e %b %Y %H:%M", tz = "Asia/Jakarta", usetz = TRUE)
+  last_updated <- trend$last_updated %>%
+    as.POSIXct() %>%
+    format(format = "%e %b %Y %H:%M", tz = "Asia/Jakarta", usetz = TRUE)
 
   res <-
-    trend %>%
+    trend[["r_estimates"]] %>%
     ggplot(aes(date, r, ymin = lower_bound, ymax = upper_bound)) +
     geom_hline(
       yintercept = 1,
@@ -53,7 +55,7 @@ show_trend_s <- function(trend) {
     expand_limits(y = 0) +
     labs(
       x = NULL,
-      y = "ESTIMAT INSTANTANEOUS REPRODUCTION NUMBER",
+      y = "INSTANTANEOUS REPRODUCTION NUMBER",
       title = glue("POLA PERKEMBANGAN {toupper(which)} COVID-19 DI {toupper(location)}"),
       subtitle = glue("MODEL DIPERBAHARUI: {last_updated}")
     ) +

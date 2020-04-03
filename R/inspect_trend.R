@@ -32,7 +32,6 @@ inspect_trend <- function(incidence,
     stop("Please supply a valid COVID-19 incidence.", call. = FALSE)
   }
 
-
   incid_dat <-
     tibble(
       dates = incidence$dates,
@@ -56,7 +55,7 @@ inspect_trend <- function(incidence,
       )
     )
 
-  res <-
+  r_estimates <-
     tibble(date = estimation$dates) %>%
     left_join(
       layer_data(EpiEstim:::plot.estimate_R(estimation, "R"), 2) %>%
@@ -74,6 +73,12 @@ inspect_trend <- function(incidence,
           upper_bound = round(ymax, 2)
         ),
       by = "date"
+    )
+
+  res <-
+    list(
+      r_estimates = r_estimates,
+      last_updated = format(Sys.time(), tz = "Asia/Jakarta", usetz = TRUE)
     )
 
   attr(res, "which") <- attr(incidence, "which")
