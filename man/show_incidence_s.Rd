@@ -15,3 +15,12 @@ A ggplot2 object.
 \description{
 Show incidence plot
 }
+\examples{
+# Fetch data
+daily <- fetch_data("Jawa Barat")
+
+# Inspect incidence
+covid_incidence <-
+  inspect_incidence(daily, "positif")
+show_incidence_s(covid_incidence)
+}

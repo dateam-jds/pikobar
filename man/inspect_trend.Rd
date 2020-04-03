@@ -19,3 +19,17 @@ A tibble of instantenous reproduction number estimates.
 \description{
 Inspect trend
 }
+\examples{
+# Fetch data
+daily <- fetch_data("Jawa Barat")
+
+# Inspect incidence
+covid_incidence <-
+  inspect_incidence(daily, "positif")
+show_incidence_s(covid_incidence)
+
+# Inspect daily trend
+covid_trend <-
+  inspect_trend(covid_incidence)
+covid_trend
+}

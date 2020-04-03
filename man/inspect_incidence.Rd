@@ -18,6 +18,11 @@ A COVID-19 incidence object.
 Inspect incidence
 }
 \examples{
-(jabar <- fetch_data(location = "Jawa Barat"))
-inspect_incidence(jabar, which = "positif")
+# Fetch data
+daily <- fetch_data("Jawa Barat")
+
+# Inspect incidence
+covid_incidence <-
+  inspect_incidence(daily, "positif")
+covid_incidence
 }

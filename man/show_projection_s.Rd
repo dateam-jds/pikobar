@@ -17,3 +17,25 @@ a ggplot2 object.
 \description{
 Show static projection plot
 }
+\examples{
+# Fetch data
+daily <- fetch_data("Jawa Barat")
+
+# Inspect incidence
+covid_incidence <-
+  inspect_incidence(daily, "positif")
+show_incidence_s(covid_incidence)
+
+# Inspect daily trend
+covid_trend <-
+  inspect_trend(covid_incidence)
+show_trend_s(covid_trend)
+
+# Project future incidence
+covid_projection <-
+  project_incidence(
+    covid_incidence,
+    n_days = 21
+  )
+show_projection_s(covid_projection)
+}
