@@ -6,6 +6,7 @@
 #' @importFrom glue glue
 #'
 #' @return A ggplot2 object.
+#' @export
 #'
 #' @examples
 #' # Fetch data
