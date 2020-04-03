@@ -1,0 +1,31 @@
+Package: pikobar
+Title: PIKOBAR
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Muhammad Aswan",
+           family = "Syahputra",
+           role = c("aut", "cre"),
+           email = "muhammadaswansyahputra@gmail.com")
+Description: Tools for analysing COVID-19 incidence in Jawa Barat and Indonesia.
+License: MIT + file LICENSE
+Imports: 
+    dplyr,
+    earlyR,
+    EpiEstim,
+    ggplot2,
+    ggrepel,
+    glue,
+    highcharter,
+    hrbrthemes,
+    httr,
+    incidence,
+    patchwork,
+    projections,
+    rlang,
+    scales,
+    tibble,
+    tidyr,
+    magrittr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
