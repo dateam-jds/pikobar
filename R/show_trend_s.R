@@ -1,8 +1,9 @@
 #' Show static trend plot
 #'
 #' @param trend A COVID-19 trend object.
-#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_hline geom_point scale_y_continuous expand_limits labs theme
+#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_hline geom_point scale_x_date expand_limits labs theme
 #' @importFrom ggrepel geom_label_repel
+#' @importFrom scales label_date
 #' @importFrom hrbrthemes theme_ipsum_rc
 #' @importFrom glue glue
 #'
@@ -51,7 +52,8 @@ show_trend_s <- function(trend) {
       family = "Roboto Condensed",
       na.rm = TRUE
     ) +
-    scale_y_continuous(breaks = function(x) seq(0, round(max(x)), 1)) +
+    scale_x_date(breaks = "3 days",
+                 labels = label_date(format = "%e %b")) +
     expand_limits(y = 0) +
     labs(
       x = NULL,

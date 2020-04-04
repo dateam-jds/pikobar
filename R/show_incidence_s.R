@@ -1,7 +1,8 @@
 #' Show incidence plot
 #'
 #' @param incidence A COVID-19 incidence object.
-#' @importFrom ggplot2 ggplot aes geom_col labs theme
+#' @importFrom ggplot2 ggplot aes geom_col scale_x_date labs theme
+#' @importFrom scales label_date
 #' @importFrom hrbrthemes theme_ipsum_rc
 #' @importFrom glue glue
 #'
@@ -31,6 +32,9 @@ show_incidence_s <- function(incidence) {
     ) %>%
     ggplot(aes(date, incidence)) +
     geom_col(fill = "steelblue") +
+    scale_x_date(breaks = "3 days",
+                 labels = label_date(format = "%e %b"),
+                 expand = c(0.005, 0.005)) +
     labs(
       x = NULL,
       y = "JUMLAH KASUS TERKONFIRMASI",

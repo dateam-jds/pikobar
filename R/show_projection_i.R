@@ -5,7 +5,7 @@
 #'
 #' @importFrom rlang arg_match
 #' @importFrom glue glue
-#' @importFrom highcharter hchart hcaes hc_add_series hc_xAxis hc_yAxis hc_title hc_subtitle hc_credits hc_tooltip hc_add_theme hc_theme_smpl hc_exporting
+#' @importFrom highcharter hchart hcaes hc_add_series hc_xAxis hc_yAxis hc_title hc_subtitle hc_credits hc_tooltip hc_add_theme hc_theme_smpl
 #'
 #' @return a highchart object.
 #' @export
@@ -69,12 +69,8 @@ show_projection_i <- function(projection, value = "cumulative") {
     ) %>%
     hc_add_series(projection_data,
       "line",
-      hcaes(date,
-        incidence,
-        ymin = lower_bound,
-        ymax = upper_bound
-      ),
-      name = "Median",
+      hcaes(date, incidence),
+      name = "MEDIAN",
       color = "#B22222"
     ) %>%
     hc_xAxis(title = list(text = NULL)) %>%
