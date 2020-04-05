@@ -5,7 +5,7 @@
 #'
 #' @importFrom rlang arg_match
 #' @importFrom glue glue
-#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_point labs scale_x_date theme ggsave
+#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_point labs scale_x_date guide_axis theme ggsave
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom scales label_date
 #' @importFrom hrbrthemes theme_ipsum_rc
@@ -75,7 +75,8 @@ show_projection_s <- function(projection, value = "cumulative") {
       family = "Roboto Condensed"
     ) +
     scale_x_date(
-      breaks = "3 days",
+      breaks = "2 days",
+      guide = guide_axis(check.overlap = TRUE),
       labels = label_date(format = "%e %b")
     ) +
     labs(
@@ -85,7 +86,7 @@ show_projection_s <- function(projection, value = "cumulative") {
       subtitle = txt_subtitle,
       caption = txt_caption
     ) +
-    theme_ipsum_rc(15, grid = "xXY") +
+    theme_ipsum_rc(15, grid = "XY") +
     theme(plot.title.position = "plot")
 
   return(res)
