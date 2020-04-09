@@ -38,7 +38,7 @@ inspect_trend <- function(incidence,
       I = as.integer(incidence$counts)
     )
 
-  t_start <- seq(7, nrow(incid_dat) - 7)
+  t_start <- seq(9, nrow(incid_dat) - 7)
   t_end <- t_start + 7
 
   estimation <-
