@@ -5,7 +5,7 @@
 #'
 #' @importFrom rlang arg_match
 #' @importFrom glue glue
-#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_point labs scale_x_date guide_axis theme ggsave
+#' @importFrom ggplot2 ggplot aes geom_ribbon geom_line geom_point labs scale_x_date guide_axis expand_limits theme ggsave
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom scales label_date
 #' @importFrom hrbrthemes theme_ipsum_rc
@@ -79,6 +79,7 @@ show_projection_s <- function(projection, value = "cumulative") {
       guide = guide_axis(check.overlap = TRUE),
       labels = label_date(format = "%e %b")
     ) +
+    expand_limits(y = 0) +
     labs(
       x = NULL,
       y = "JUMLAH KASUS",
