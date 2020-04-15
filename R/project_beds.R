@@ -110,6 +110,7 @@ project_beds <- function(projection, los = 13, n_sim = 10) {
   res <-
     list(
       projection = beds_projection,
+      los = los,
       last_updated = projection$last_updated
     )
 

@@ -19,12 +19,10 @@
 #' # Inspect incidence
 #' covid_incidence <-
 #'   inspect_incidence(daily, "positif")
-#' show_incidence_s(covid_incidence)
 #'
 #' # Inspect daily trend
 #' covid_trend <-
 #'   inspect_trend(covid_incidence)
-#' show_trend_s(covid_trend)
 #'
 #' # Project future incidence
 #' covid_projection <-
@@ -50,12 +48,13 @@ show_beds_projection_s <- function(beds_projection) {
   location <- attr(beds_projection, "location")
 
   projection_data <- beds_projection[["projection"]]
+  los <- beds_projection[["los"]]
   last_updated <- beds_projection[["last_updated"]] %>%
     as.POSIXct() %>%
     format(format = "%e %b %Y %H:%M", tz = "Asia/Jakarta", usetz = TRUE)
 
-  txt_title <- glue("PROYEKSI KEBUTUHAN HARIAN KASUR DI {toupper(location)}")
-  txt_subtitle <- glue("MODEL DIPERBAHARUI: {last_updated}")
+  txt_title <- glue("PROYEKSI KEBUTUHAN HARIAN KASUR RUMAH SAKIT DI {toupper(location)}")
+  txt_subtitle <- glue("ASUMSI LAMA WAKTU INAP: {los} HARI\nMODEL DIPERBAHARUI: {last_updated}")
   txt_caption <- glue("SUMBER DATA: DINAS KESEHATAN PROVINSI JAWA BARAT")
 
   if (location == "Indonesia") {
@@ -66,11 +65,11 @@ show_beds_projection_s <- function(beds_projection) {
     projection_data %>%
     ggplot(aes(date, n_beds, group = 1)) +
     geom_ribbon(aes(ymin = lower_bound, ymax = upper_bound),
-                fill = "violet",
+                fill = "yellow2",
                 alpha = 0.4
     ) +
     geom_line(size = 0.8, colour = "grey30") +
-    geom_point(size = 3, colour = "mediumvioletred") +
+    geom_point(size = 3, colour = "darkorange1") +
     geom_label_repel(aes(label = round(n_beds)),
                      direction = "y",
                      family = "Roboto Condensed"
